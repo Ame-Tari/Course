@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.core.env.Environment;
 
+/**
+ * @author huangmingtao
+ */
 @SpringBootApplication
 @EnableDiscoveryClient
 public class SystemApplication {
