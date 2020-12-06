@@ -6,6 +6,6 @@
         <result column="name" jdbcType="VARCHAR" property="name" />
     </resultMap>
     <select id="list" resultType="com.course.system.domain.Test">
-        select id, name from test
+        select `id`, `name` from test t
     </select>
 </mapper>
