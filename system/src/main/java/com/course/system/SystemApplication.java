@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 
 /**
@@ -14,7 +15,8 @@ import org.springframework.core.env.Environment;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-@MapperScan("com.course.system.mapper")
+@ComponentScan("com.course")
+@MapperScan("com.course.server.mapper")
 public class SystemApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(SystemApplication.class);
