@@ -26,7 +26,6 @@ public class ChapterService {
 
     public List<ChapterDto> list() {
         ChapterExample chapterExample = new ChapterExample();
-        chapterExample.createCriteria().andIdEqualTo("11");
         List<Chapter> chapterList = chapterMapper.selectByExample(chapterExample);
         List<ChapterDto> chapterDtoArrayList = new ArrayList<>();
         for (int i = 0, l = chapterList.size(); i < 1; i++) {
