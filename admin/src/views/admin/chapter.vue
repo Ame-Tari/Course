@@ -91,9 +91,12 @@
     methods: {
       list() {
         let _this = this;
-        -_this.$ajax.get('http://127.0.0.1:9000/business/admin/chapter/list').then((Response => {
+        -_this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/list', {
+          page: 1,
+          size: 1
+        }).then((Response => {
           console.log("查询大章列表结果：", Response);
-          _this.chapters = Response.data;
+          _this.chapters = Response.data.list();
         }))
       }
     }
