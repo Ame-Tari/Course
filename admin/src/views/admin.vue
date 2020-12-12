@@ -356,13 +356,11 @@
         </div><!-- /.sidebar-shortcuts -->
 
         <ul class="nav nav-list">
-          <li class="" id="welcome-sidebat">
-            <router-link to="/admin/welcome" >
+          <li class="" id="welcome-sidebar">
+            <router-link to="/welcome" >
               <i class="menu-icon fa fa-tachometer"></i>
               <span class="menu-text"> 欢迎 </span>
-
             </router-link>
-
             <b class="arrow"></b>
           </li>
 
@@ -410,11 +408,10 @@
 
             <ul class="submenu">
               <li class="active" id="business-chapter-sidebar">
-                <router-link  to="/admin/business/chapter">
+                <router-link  to="/business/chapter">
                   <i class="menu-icon fa fa-caret-right"></i>
                   大章管理
                 </router-link>
-
                 <b class="arrow"></b>
               </li>
 
@@ -480,9 +477,23 @@
   export default {
     name: "admin",
     mouted: function () {
+      let _this = this;
       $("body").removeClass("login-layout light-login");
       $("body").attr("class", "no-skin");
-      console.log("admin");
+      //console.log("admin");
+      _this.activeSidebar(_this.$route.name.replace("/", "-") + "-sidebar");
+    },
+    watch: {
+      $route: {
+        handler: function (val, oldVal) {
+          // sidebar激活样式方法二
+          console.log("---->页面跳转：", val, oldVal);
+          let _this = this;
+          _this.$nextTick(function () {  //页面加载完成后执行
+            _this.activeSidebar(_this.$route.name.replace("/", "-") + "-sidebar");
+          })
+        }
+      }
     },
     methods: {
       login() {
@@ -493,19 +504,18 @@
        * @param id
        */
       activeSidebar: function (id) {
-      // 兄弟菜单去掉active样式，自身增加active样式
+        // 兄弟菜单去掉active样式，自身增加active样式
         $("#" + id).siblings().removeClass("active");
         $("#" + id).siblings().find("li").removeClass("active");
         $("#" + id).addClass("active");
-        //如果有父菜单，父菜单的 兄弟 菜单去掉open active， 父菜单增加open active
+        // 如果有父菜单，父菜单的兄弟菜单去掉open active，父菜单增加open active
         let parentLi = $("#" + id).parents("li");
-        if (parentLi){
+        if (parentLi) {
           parentLi.siblings().removeClass("open active");
-          parentLi.siblings().find("li").removeClass("open active");
+          parentLi.siblings().find("li").removeClass("active");
           parentLi.addClass("open active");
         }
       }
-
     }
   }
 </script>
