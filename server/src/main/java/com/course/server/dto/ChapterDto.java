@@ -11,10 +11,9 @@ public class ChapterDto {
 
     private String id;
 
-    @NonNull
     private String courseId;
 
-    @NonNull
+
     private String name;
 
 }
