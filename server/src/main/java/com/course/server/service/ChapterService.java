@@ -28,7 +28,7 @@ public class ChapterService {
         ChapterExample chapterExample = new ChapterExample();
         List<Chapter> chapterList = chapterMapper.selectByExample(chapterExample);
         List<ChapterDto> chapterDtoArrayList = new ArrayList<>();
-        for (int i = 0, l = chapterList.size(); i < 1; i++) {
+        for (int i = 0, l = chapterList.size(); i < l; i++) {
             Chapter chapter = chapterList.get(i);
             ChapterDto chapterDto = new ChapterDto();
             BeanUtils.copyProperties(chapter,chapterDto);

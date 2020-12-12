@@ -481,6 +481,7 @@
       $("body").removeClass("login-layout light-login");
       $("body").attr("class", "no-skin");
       //console.log("admin");
+      //sidebar激活样式
       _this.activeSidebar(_this.$route.name.replace("/", "-") + "-sidebar");
     },
     watch: {
