@@ -108,12 +108,29 @@
       },
       del(id) {
         let _this = this;
-        _this.$ajax.delete('http://127.0.0.1:9000/business/admin/chapter/delete/' + id).then((Response => {
-          let response = Response.data;
-          if (response.success) {
-            _this.list(1);
+        Swal.fire({
+          title: '确认删除?',
+          text: "删除后不可恢复，确认删除？",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: '确认!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            _this.$ajax.delete('http://127.0.0.1:9000/business/admin/chapter/delete/' + id).then((Response => {
+            let response = Response.data;
+            if (response.success) {
+              _this.list(1);
+            }
+            }));
+            Swal.fire(
+              '删除成功!',
+              '已删除！',
+              'success'
+            )
           }
-        }))
+        });
       },
       list(page) {
         let _this = this;
