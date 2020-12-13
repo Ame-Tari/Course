@@ -1,5 +1,8 @@
 package com.course.server.domain;
 
+/**
+ * @author huangmingtao
+ */
 public class Test {
     private String id;
 

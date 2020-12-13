@@ -12,7 +12,7 @@
     </button>
     <button v-for="p in pages" v-bind:id="'page-' + p"
             type="button" class="btn btn-default btn-white btn-round"
-            v-bind:class="{'btn-primary active':page == p}"
+            v-bind:class="{'btn-primary active':page === p}"
             v-on:click="selectPage(p)">
       {{p}}
     </button>

@@ -3,6 +3,9 @@ package com.course.server.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author huangmingtao
+ */
 public class ChapterExample {
     protected String orderByClause;
 
