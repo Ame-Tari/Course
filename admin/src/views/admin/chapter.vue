@@ -118,7 +118,9 @@
           confirmButtonText: '确认!'
         }).then((result) => {
           if (result.isConfirmed) {
+            loading.show();
             _this.$ajax.delete('http://127.0.0.1:9000/business/admin/chapter/delete/' + id).then((Response => {
+                  loading.hide();
                   let response = Response.data;
                   if (response.success) {
                     _this.list(1);
@@ -137,11 +139,13 @@
       },
       list(page) {
         let _this = this;
+        loading.show();
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/list', {
           page: page,
           size: _this.$refs.pagination.size,
         }).then((Response => {
           //console.log("查询大章列表结果：", Response);
+          loading.hide();
           let response = Response.data;
           _this.chapters = response.content.list;
           _this.$refs.pagination.render(page, response.content.total);
@@ -150,9 +154,11 @@
 
       save() {
         let _this = this;
+        loading.show();
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/save', _this.chapter)
           .then((Response => {
           //console.log("保存大章列表结果：", Response);
+            loading.hide();
           let response = Response.data;
           if (response.success) {
             $("#form-modal").modal("show");
