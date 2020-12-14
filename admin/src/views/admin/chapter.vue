@@ -119,16 +119,19 @@
         }).then((result) => {
           if (result.isConfirmed) {
             _this.$ajax.delete('http://127.0.0.1:9000/business/admin/chapter/delete/' + id).then((Response => {
-            let response = Response.data;
-            if (response.success) {
-              _this.list(1);
-            }
-            }));
-            Swal.fire(
+                  let response = Response.data;
+                  if (response.success) {
+                    _this.list(1);
+                    toast.success("删除成功！");
+                  }
+                }
+              )
+            );
+            /*Swal.fire(
               '删除成功!',
               '已删除！',
               'success'
-            )
+            )*/
           }
         });
       },
@@ -154,6 +157,7 @@
           if (response.success) {
             $("#form-modal").modal("show");
             _this.list(1);
+            toast.success("保存成功");
           }
         }))
       }
