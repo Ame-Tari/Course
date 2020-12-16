@@ -6,7 +6,7 @@ CREATE TABLE course(
 	summary VARCHAR (50) NOT NULL DEFAULT '' COMMENT '概述',
 	`time` INT (11) NOT NULL DEFAULT -1 COMMENT '时长|单位秒',
 	price DECIMAL (13,4) NOT NULL DEFAULT -1 COMMENT '价格（元）',
-	image VARCHAR (50) NOT NULL DEFAULT '' COMMENT '封面',
+	image VARCHAR (50)  DEFAULT '' COMMENT '封面',
 	`level` VARCHAR (50) NOT NULL DEFAULT '' COMMENT '级别|ONE("1", "初级"),TWO("2", "中级"),THREE("3", "高级")',
 	charge VARCHAR (50) NOT NULL DEFAULT '' COMMENT '收费|CHARGE("C", "收费"),FREE("F", "免费")',
 	`status` VARCHAR (50) NOT NULL DEFAULT '' COMMENT '状态|PUBLISH("P", "发布"),DRAFT("D", "草稿")',

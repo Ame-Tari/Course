@@ -44,8 +44,6 @@ public class CourseController {
         ValidatorUtil.length(courseDto.getSummary(), "概述", 1, 50);
         ValidatorUtil.require(courseDto.getTime(), "时长");
         ValidatorUtil.require(courseDto.getPrice(), "价格（元）");
-        ValidatorUtil.require(courseDto.getImage(), "封面");
-        ValidatorUtil.length(courseDto.getImage(), "封面", 1, 50);
         ValidatorUtil.require(courseDto.getLevel(), "级别");
         ValidatorUtil.length(courseDto.getLevel(), "级别", 1, 50);
         ValidatorUtil.require(courseDto.getCharge(), "收费");

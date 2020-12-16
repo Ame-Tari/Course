@@ -20,20 +20,28 @@
           <img v-show="course.image" class="media-object" v-bind:src="course.image" />
           <div class="caption">
             <div class="clearfix">
-              <span class="pull-right label label-grey info-label">
+              <span class="pull-right label label-primary info-label">
                 <td>{{COURSE_LEVEL | optionKV(course.level)}}</td>
               </span>
-              <span class="pull-right label label-grey info-label">
+              <span class="pull-right label label-primary info-label">
                 <td>{{COURSE_CHARGE | optionKV(course.charge)}}</td>
               </span>
-              <span class="pull-right label label-grey info-label">
+              <span class="pull-right label label-primary info-label">
                <td>{{COURSE_STATUS | optionKV(course.status)}}</td>
               </span>
             </div>
             <h3 class="search-title">
               <a href="#" class="blue">{{course.name}}</a>
             </h3>
+            <p>
+              <span class="blue bolder bigger-150">{{course.price}}&nbsp;<i class="fa fa-rmb"></i> </span>
+            </p>
             <p>{{course.summary}}</p>
+            <p>
+              <span class="badge badge-info">{{course.id}}</span>
+              <span class="badge badge-info">{{course.sort}}</span>
+              <span class="badge badge-info">{{course.time}}</span>
+            </p>
             <p>
               <button v-on:click="edit(course)" class="btn btn-xs btn-info">
               <i class="ace-icon fa fa-pencil bigger-120"></i>
@@ -253,8 +261,6 @@
           || !Validator.length(_this.course.summary, "概述", 1, 50)
           || !Validator.require(_this.course.time, "时长")
           || !Validator.require(_this.course.price, "价格（元）")
-          || !Validator.require(_this.course.image, "封面")
-          || !Validator.length(_this.course.image, "封面", 1, 50)
           || !Validator.require(_this.course.level, "级别")
           || !Validator.length(_this.course.level, "级别", 1, 50)
           || !Validator.require(_this.course.charge, "收费")
@@ -300,3 +306,9 @@
     }
   }
 </script>
+
+<style>
+  .caption h3{
+    font-size: 20px;
+  }
+</style>
