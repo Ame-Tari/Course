@@ -1,5 +1,9 @@
 package com.course.server.enums;
 
+/**
+ * @author huangmingtao
+ */
+
 public enum SectionChargeEnum {
 
     CHARGE("C", "收费"),

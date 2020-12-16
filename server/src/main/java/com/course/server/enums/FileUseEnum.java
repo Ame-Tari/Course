@@ -1,5 +1,9 @@
 package com.course.server.enums;
 
+/**
+ * @author huangmingtao
+ */
+
 public enum FileUseEnum {
 
     COURSE("C", "课程"),
