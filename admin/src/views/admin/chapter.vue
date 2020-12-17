@@ -2,7 +2,7 @@
   <div>
     <h3>{{course.name}}</h3>
     <p>
-      <router-link to="business/course" class="btn btn-white btn-default btn-round">
+      <router-link to="/business/course" class="btn btn-white btn-default btn-round">
         <i class="ace-icon fa fa-arrow-left"></i>
         返回课程
       </router-link>
@@ -64,9 +64,9 @@
                   <input  v-model="chapter.name" class="form-control"  placeholder="名称">
                 </div>
               </div><div class="form-group">
-                <label  class="col-sm-2 control-label">课程ID</label>
+                <label  class="col-sm-2 control-label">课程</label>
                 <div class="col-sm-10">
-                    <input v-model="chapter.courseId" class="form-control"  placeholder="课程ID">
+                    <p class="form-control-static">{{course.name}}</p>
                 </div>
               </div>
             </form>
@@ -90,7 +90,8 @@
     data: function () {
       return {
         chapter: {},
-        chapters: []
+        chapters: [],
+        course: {},
       }
     },
     mounted: function () {
@@ -162,6 +163,7 @@
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/list', {
           page: page,
           size: _this.$refs.pagination.size,
+          courseId: _this.course.id
         }).then((Response => {
           //console.log("查询大章列表结果：", Response);
           Loading.hide();
@@ -173,14 +175,13 @@
 
       save() {
         let _this = this;
-
-        //保存校验
         if (!Validator.require(_this.chapter.name, "名称")
-          || !Validator.require(_this.chapter.courseId, "课程ID")
           || !Validator.length(_this.chapter.courseId, "课程ID", 1, 8)
         ) {
           return;
         }
+        //保存校验
+        _this.chapter.courseId = _this.course.id;
 
         Loading.show();
         _this.$ajax.post('http://127.0.0.1:9000/business/admin/chapter/save', _this.chapter)
