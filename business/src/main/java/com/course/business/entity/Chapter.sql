@@ -6,3 +6,8 @@ CREATE TABLE chapter(
 	`name` VARCHAR (50) NOT NULL DEFAULT '' COMMENT '名称',
 	PRIMARY KEY (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '大章';
+
+
+update course c
+set 'time' = (select sum('time') from 'section' where course_id = '')
+where c.id = '';

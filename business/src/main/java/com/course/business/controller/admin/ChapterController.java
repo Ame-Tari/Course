@@ -40,7 +40,6 @@ public class ChapterController {
         ValidatorUtil.require(chapterDto.getName(), "名称");
         ValidatorUtil.require(chapterDto.getCourseId(), "课程ID");
         ValidatorUtil.length(chapterDto.getCourseId(), "课程ID",1,8);
-
         ResponseDto<ChapterDto> responseDto = new ResponseDto<>();
         chapterService.save(chapterDto);
         responseDto.setContent(chapterDto);
