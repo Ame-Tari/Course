@@ -11,7 +11,9 @@ import com.course.server.util.UuidUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -47,13 +49,17 @@ public class SectionService {
     /**
      * 保存，id有值时更新，无值时新增
      */
-    public void save(SectionDto sectionDto) {
+    @Transactional(rollbackFor = Exception.class)
+    public void save(SectionDto sectionDto) throws Exception {
         Section section = CopyUtil.copy(sectionDto, Section.class);
         if (StringUtils.isEmpty(sectionDto.getId())) {
             this.insert(section);
         } else {
             this.update(section);
         }
+     /*   if (true) {
+            throw new Exception("实物测试");
+        }*/
         courseService.updateTime(sectionDto.getCourseId());
     }
 
