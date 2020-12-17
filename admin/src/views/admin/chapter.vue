@@ -89,7 +89,12 @@
     },
     mounted: function () {
       let _this = this;
-
+      _this.$refs.pagination.size = 5;
+      let course = SessionStorage.get("course") || {};
+      if (Tool.isEmpty(course)) {
+        _this.$router.push("/welcome");
+      }
+      _this.course = course;
       _this.list(1);
       //页面初始化时执行
     },
