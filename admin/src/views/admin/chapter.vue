@@ -1,12 +1,18 @@
 <template>
   <div>
+    <h3>{{course.name}}</h3>
     <p>
-    <button v-on:click="add()" class="btn btn-white btn-default btn-round">
+      <router-link to="business/course" class="btn btn-white btn-default btn-round">
+        <i class="ace-icon fa fa-arrow-left"></i>
+        返回课程
+      </router-link>
+      &nbsp;
+      <button v-on:click="add()" class="btn btn-white btn-default btn-round">
       <i class="ace-icon fa fa-edit"></i>
-      新增
+        新增
     </button>
       &nbsp;
-    <button v-on:click="list()" class="btn btn-white btn-default btn-round">
+      <button v-on:click="list()" class="btn btn-white btn-default btn-round">
         <i class="ace-icon fa fa-refresh"></i>
         刷新
       </button>
