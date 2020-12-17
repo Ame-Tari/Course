@@ -54,7 +54,7 @@
             <p>
               <span class="badge badge-info">{{course.id}}</span>
               <span class="badge badge-info">{{course.sort}}</span>
-              <span class="badge badge-info">{{course.time}}</span>
+              <span class="badge badge-info">{{course.time | formatSecond}}</span>
             </p>
           </div>
         </div>

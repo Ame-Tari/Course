@@ -10,9 +10,9 @@ module.exports = {
     rules: {
         'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-        'no-undef': '0',
+        'no-undef': 0,
         'vue/no-unused-vars': 'off',
-        'vue/require-v-for-key': 'off',
+        'vue/require-v-for-key': 0,
         'no-unused-vars': 'off',
         'vue/no-unused-components': 'off'
     },

@@ -182,7 +182,10 @@
       toSection(chapter) {
         let _this = this;
         SessionStorage.set("chapter", chapter);
-        _this.$router.push("/bussiness/section");
+        _this.$router.push(
+          {
+            path: "/business/section"
+          });
       },
     }
   };

@@ -31,8 +31,8 @@ public class SectionController {
     @PostMapping("/list")
     public ResponseDto list(@RequestBody SectionPageDto sectionPageDto) {
         ResponseDto responseDto = new ResponseDto();
-        ValidatorUtil.require(sectionPageDto.getCourseId(), "课程ID");
-        ValidatorUtil.require(sectionPageDto.getChapterId(), "大章ID");
+/*        ValidatorUtil.require(sectionPageDto.getCourseId(), "课程ID");
+        ValidatorUtil.require(sectionPageDto.getChapterId(), "大章ID");*/
         sectionService.list(sectionPageDto);
         responseDto.setContent(sectionPageDto);
         return responseDto;
@@ -42,7 +42,7 @@ public class SectionController {
      * 保存，id有值时更新，无值时新增
      */
     @PostMapping("/save")
-    public ResponseDto save(@RequestBody SectionDto sectionDto) {
+    public ResponseDto save(@RequestBody SectionDto sectionDto) throws Exception {
         // 保存校验
         ValidatorUtil.require(sectionDto.getTitle(), "标题");
         ValidatorUtil.length(sectionDto.getTitle(), "标题", 1, 50);
