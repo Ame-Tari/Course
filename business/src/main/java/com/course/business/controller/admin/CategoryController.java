@@ -25,7 +25,7 @@ public class CategoryController {
     /**
      * 列表查询
      */
-    @PostMapping("/list")
+    @PostMapping("/all")
     public ResponseDto all() {
         ResponseDto responseDto = new ResponseDto();
         List<CategoryDto> categoryDtoList = categoryService.all();
