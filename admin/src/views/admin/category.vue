@@ -25,7 +25,7 @@
           </thead>
 
           <tbody>
-          <tr v-for="category in level1" v-on:click="onClickLevel1(category) " v-bind:class="{'active': category.id === active.id}">
+          <tr v-for="category in level1" v-on:click="onClickLevel1(category)" v-bind:class="{'active' : category.id === active.id}">
             <td>{{category.id}}</td>
             <td>{{category.name}}</td>
             <td>{{category.sort}}</td>
@@ -123,9 +123,7 @@
 </template>
 
 <script>
-
   export default {
-    components: {},
     name: "business-category",
     data: function() {
       return {
@@ -191,15 +189,16 @@
           Loading.hide();
           let resp = response.data;
           _this.categorys = resp.content;
-          //将所有的记录格式化成树形结构
+
+          // 将所有记录格式化成树形结构
           _this.level1 = [];
           for (let i = 0; i < _this.categorys.length; i++) {
             let c = _this.categorys[i];
-            if (c.parents === '00000000'){
+            if (c.parent === '00000000') {
               _this.level1.push(c);
               for (let j = 0; j < _this.categorys.length; j++) {
                 let child = _this.categorys[j];
-                if (child.parents === c.id){
+                if (child.parent === c.id) {
                   if (Tool.isEmpty(c.children)) {
                     c.children = [];
                   }
@@ -208,6 +207,13 @@
               }
             }
           }
+
+          _this.level2 = [];
+          // 对当前一级分类中选中的表格触发一次点击事件，以刷新二级菜单列表
+          // 注意：界面的渲染需要等vue绑定好变量后才做，所以加延时100ms
+          setTimeout(function () {
+            $("tr.active").trigger("click");
+          }, 100);
         })
       },
 
@@ -257,7 +263,8 @@
           })
         });
       },
-      onClickLevel1(category){
+
+      onClickLevel1(category) {
         let _this = this;
         _this.active = category;
         _this.level2 = category.children;
@@ -266,9 +273,8 @@
   }
 </script>
 
-<style>
-  .active td{
+<style scoped>
+  .active td {
     background-color: #d6e9c6 !important;
   }
-
 </style>
