@@ -32,3 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 /admin/public/ace/
+/admin/public/zTree_v3/
