@@ -167,7 +167,8 @@
         COURSE_LEVEL: COURSE_LEVEL,
         COURSE_CHARGE: COURSE_CHARGE,
         COURSE_STATUS: COURSE_STATUS,
-        category: [],
+        categorys: [],
+        tree: {},
       }
     },
     mounted: function() {
@@ -248,8 +249,14 @@
         ) {
           return;
         }
-
+        let categorys = _this.tree.getCheckedNodes();
+        if (Tool.isEmpty(categorys)) {
+          Toast.warning("请选择分类！");
+          return;
+        }
         Loading.show();
+        console.log(categorys);
+        _this.course.categorys = categorys;
         _this.$ajax.post( 'http://127.0.0.1:9000/business/admin/course/save', _this.course).then((response)=>{
           Loading.hide();
           let resp = response.data;
@@ -283,11 +290,11 @@
       allCategory() {
         let _this = this;
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER + '/business/admin/category/all').then((response)=>{
+        _this.$ajax.post('http://127.0.0.1:9000/business/admin/category/all').then((response)=>{
           Loading.hide();
           let resp = response.data;
           _this.categorys = resp.content;
-
+          console.log(_this.categorys);
           _this.initTree();
         })
       },
